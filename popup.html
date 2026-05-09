@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Verlauf</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="brand">
+        <img src="history.png" class="logo" alt="">
+        <h1>Verlauf</h1>
+      </div>
+
+      <button
+        id="clear-history"
+        class="icon-button"
+        type="button"
+        title="Verlauf löschen"
+        aria-label="Verlauf löschen"
+      >
+        <img src="delete.svg" alt="">
+      </button>
+    </div>
+
+    <div class="search-wrapper">
+      <input
+        id="search"
+        type="search"
+        placeholder="Verlauf durchsuchen..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+  </header>
+
+  <main id="history"></main>
+
+  <div id="loading">
+    Weitere Einträge werden geladen …
+  </div>
+
+  <template id="empty-template">
+    <div class="empty">
+      <img src="history.png" class="empty-logo" alt="">
+      <h2>Keine Einträge gefunden</h2>
+    </div>
+  </template>
+
+  <script src="popup.js"></script>
+</body>
+</html>
