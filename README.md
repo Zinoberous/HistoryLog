@@ -1,18 +1,20 @@
-# chrome-history-popup-extension
+# browser-history-popup-extension
 
-Compact and fast Chrome history popup inspired by Microsoft Edge.
+Compact and fast browser history popup.
 
-QuickHistory replaces the default Chrome history experience with a minimal, compact and searchable popup directly accessible from the toolbar.
+QuickHistory replaces the default browser history experience with a minimal, compact and searchable popup directly accessible from the toolbar.
 
 ## Features
 
 - Chronological browser history
+- Recently closed tabs and windows
 - Compact layout optimized for fast scanning
 - Lazy loading for large history databases
 - Fast search
-- Hover actions inspired by Microsoft Edge
+- Hover actions for quick cleanup
 - Delete individual history entries
 - Clear complete history
-- Dark theme
-- Native Chrome popup integration
+- Light and dark themes with system default
+- English and German UI with system default
+- Native browser popup integration
 - Lightweight and dependency-free

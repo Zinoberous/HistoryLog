@@ -1,13 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Verlauf",
+  "name": "History",
   "version": "1.0.0",
-  "description": "Kompakter chronologischer Verlauf als Chrome-Popup.",
+  "description": "Compact chronological history as a popup.",
   "permissions": [
-    "history"
+    "history",
+    "sessions",
+    "tabs"
   ],
   "action": {
-    "default_title": "Verlauf",
+    "default_title": "History",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon-16.png",

@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Verlauf</title>
+  <title>History</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
@@ -10,43 +10,143 @@
     <div class="header-top">
       <div class="brand">
         <img src="history.png" class="logo" alt="">
-        <h1>Verlauf</h1>
+        <h1 data-i18n="appTitle">History</h1>
       </div>
 
-      <button
-        id="clear-history"
-        class="icon-button"
-        type="button"
-        title="Verlauf löschen"
-        aria-label="Verlauf löschen"
-      >
-        <img src="delete.svg" alt="">
-      </button>
+      <div class="header-actions">
+        <select
+          id="language-select"
+          class="language-select"
+          title="Language"
+          aria-label="Language"
+          data-i18n-title="languageLabel"
+          data-i18n-aria-label="languageLabel"
+        >
+          <option value="en">EN</option>
+          <option value="de">GE</option>
+        </select>
+
+        <button
+          id="theme-toggle"
+          class="icon-button"
+          type="button"
+          title="Switch theme"
+          aria-label="Switch theme"
+          data-i18n-title="switchTheme"
+          data-i18n-aria-label="switchTheme"
+        >
+          <span id="theme-icon" aria-hidden="true"></span>
+        </button>
+
+        <button
+          id="clear-history"
+          class="icon-button"
+          type="button"
+          title="Clear history"
+          aria-label="Clear history"
+          data-i18n-title="clearHistory"
+          data-i18n-aria-label="clearHistory"
+        >
+          <img src="delete.svg" alt="">
+        </button>
+      </div>
     </div>
 
     <div class="search-wrapper">
       <input
         id="search"
         type="search"
-        placeholder="Verlauf durchsuchen..."
+        placeholder="Search history..."
+        data-i18n-placeholder="searchPlaceholder"
         autocomplete="off"
         spellcheck="false"
       />
     </div>
+
+    <div class="tabs" role="tablist" aria-label="History views">
+      <button
+        id="all-tab"
+        class="tab is-active"
+        type="button"
+        role="tab"
+        aria-selected="true"
+        aria-controls="all-panel"
+        data-tab="all"
+        data-i18n="allTab"
+      >All</button>
+      <button
+        id="recently-closed-tab"
+        class="tab"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        aria-controls="recently-closed-panel"
+        data-tab="recent"
+        data-i18n="recentlyClosed"
+      >Recently closed</button>
+    </div>
   </header>
 
-  <main id="history"></main>
+  <main id="history">
+    <section
+      id="all-panel"
+      class="tab-panel"
+      role="tabpanel"
+      aria-labelledby="all-tab"
+    >
+      <div id="history-list"></div>
+    </section>
+
+    <section
+      id="recently-closed-panel"
+      class="tab-panel"
+      role="tabpanel"
+      aria-labelledby="recently-closed-tab"
+      hidden
+    >
+      <div id="recently-closed-entries" class="entries"></div>
+    </section>
+  </main>
 
   <div id="loading">
-    Weitere Einträge werden geladen …
+    <span data-i18n="loading">Loading more entries...</span>
   </div>
 
   <template id="empty-template">
     <div class="empty">
       <img src="history.png" class="empty-logo" alt="">
-      <h2>Keine Einträge gefunden</h2>
+      <h2 data-i18n="empty">No entries found</h2>
     </div>
   </template>
+
+  <div id="confirm-overlay" class="confirm-overlay" hidden>
+    <section
+      class="confirm-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-title"
+      aria-describedby="confirm-message"
+    >
+      <h2 id="confirm-title" data-i18n="confirmClearTitle">Clear history?</h2>
+      <p id="confirm-message" data-i18n="confirmClear">
+        Do you really want to clear the entire history?
+      </p>
+      <div class="confirm-actions">
+        <button
+          id="confirm-cancel"
+          class="dialog-button"
+          type="button"
+          data-i18n="cancel"
+        >Cancel</button>
+        <button
+          id="confirm-accept"
+          class="dialog-button danger-button"
+          type="button"
+          data-i18n="clearHistory"
+        >Clear history</button>
+      </div>
+    </section>
+  </div>
 
   <script src="popup.js"></script>
 </body>
