@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "History",
+  "name": "HistoryLog",
   "version": "1.0.0",
-  "description": "Compact chronological history as a popup.",
+  "description": "A lightweight browser extension for fast, day-to-day browsing history access.",
   "permissions": [
     "history",
     "sessions",
     "tabs"
   ],
   "action": {
-    "default_title": "History",
+    "default_title": "HistoryLog",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon-16.png",
