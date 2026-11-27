@@ -342,13 +342,14 @@ const getRecentlyClosedItemDetails = session => {
   };
 };
 
-const restoreRecentlyClosedSession = async sessionId => {
+const restoreRecentlyClosedSession = async session => {
   try {
-    if (sessionId) {
-      await chrome.sessions.restore(sessionId);
+    if (session.tab) {
+      const { url } = getTabDetails(session.tab);
+      await chrome.tabs.create(url ? { url } : {});
     }
     else {
-      await chrome.sessions.restore();
+      await chrome.sessions.restore(session.window.sessionId);
     }
   }
   catch (error) {
@@ -437,7 +438,7 @@ const createRecentlyClosedGroup = session => {
   restoreButton.addEventListener("click", event => {
     event.preventDefault();
     event.stopPropagation();
-    restoreRecentlyClosedSession(item.sessionId);
+    restoreRecentlyClosedSession(session);
   });
 
   content.append(title, subtitle);
@@ -499,7 +500,7 @@ const createRecentlyClosedEntry = session => {
   button.append(createFavicon(item.url), content, meta);
 
   button.addEventListener("click", () => {
-    restoreRecentlyClosedSession(item.sessionId);
+    restoreRecentlyClosedSession(session);
   });
 
   return button;
